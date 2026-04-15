@@ -4,10 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "tw:build": "node build-tailwind.mjs",
+    "dev": "npm run tw:build && vite --configLoader native",
+    "build": "npm run tw:build && vite build --configLoader native",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview --configLoader native"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.2",
