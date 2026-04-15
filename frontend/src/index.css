@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --color-beige-100: #FFF8DC;
+  --color-beige-200: #F5F5DC;
+  --color-olive-500: #808000;
+  --color-olive-600: #556B2F;
+  --color-neutral-100: #FAF9F6;
+  --color-neutral-200: #EADDCA;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-neutral-100);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Custom leaflet popup overrides for aesthetics */
+.leaflet-popup-content-wrapper {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(8px) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.leaflet-popup-tip {
+  background: rgba(255, 255, 255, 0.95) !important;
+}
