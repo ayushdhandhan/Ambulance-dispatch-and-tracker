@@ -161,16 +161,16 @@ function DashboardPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_top,#fff8dc,transparent_40%),linear-gradient(135deg,#faf9f6,#f0ead8)] text-slate-800">
+    <div className="min-h-screen bg-[#fcfcfc] text-slate-800">
       <div className="flex min-h-screen">
-        <aside className="w-72 border-r border-white/60 bg-white/70 p-6 backdrop-blur-xl">
-          <div className="rounded-3xl bg-olive-600 px-5 py-6 text-white shadow-xl">
+        <aside className="w-72 border-r border-slate-200 bg-white p-6">
+          <div className="rounded-3xl bg-emergency-600 px-5 py-6 text-white shadow-xl shadow-emergency-600/20">
             <div className="flex items-center gap-3">
               <div className="rounded-2xl bg-white/15 p-3">
                 <Radio className="h-6 w-6" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold">AeroRescue</h1>
+                <h1 className="text-2xl font-bold">Aero Rescue</h1>
                 <p className="text-sm text-white/80">Emergency control room</p>
               </div>
             </div>
@@ -189,8 +189,8 @@ function DashboardPage() {
                 onClick={() => setCurrentView(value)}
                 className={`flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-left transition ${
                   currentView === value
-                    ? 'bg-white text-olive-600 shadow-md ring-1 ring-olive-100'
-                    : 'text-slate-600 hover:bg-white/70'
+                    ? 'bg-emergency-50 text-emergency-600 shadow-sm ring-1 ring-emergency-100'
+                    : 'text-slate-600 hover:bg-slate-50'
                 }`}
               >
                 {icon}
@@ -239,7 +239,7 @@ function DashboardPage() {
               <button
                 type="button"
                 onClick={openDispatch}
-                className="rounded-full bg-olive-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-olive-500"
+                className="rounded-full bg-emergency-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-emergency-600/20 transition hover:bg-emergency-700 hover:scale-105 active:scale-95"
               >
                 + New Dispatch
               </button>
@@ -261,7 +261,7 @@ function DashboardPage() {
                 {
                   label: 'Available Ambulances',
                   value: stats.availableAmbulances,
-                  icon: <Ambulance className="h-5 w-5 text-olive-600" />,
+                  icon: <Ambulance className="h-5 w-5 text-emergency-600" />,
                 },
                 {
                   label: 'Tracking Sessions',
@@ -400,7 +400,7 @@ function DashboardPage() {
                             </div>
                             <div className="h-3 rounded-full bg-slate-100">
                               <div
-                                className="h-3 rounded-full bg-gradient-to-r from-olive-600 to-emerald-400"
+                                className="h-3 rounded-full bg-gradient-to-r from-emergency-600 to-rose-400"
                                 style={{ width: `${Math.max(12, entry.total * 14)}px` }}
                               />
                             </div>
@@ -416,7 +416,7 @@ function DashboardPage() {
             <div className="space-y-6 overflow-y-auto">
               <div className="rounded-[2rem] border border-white/70 bg-white/75 p-5 shadow-sm backdrop-blur-xl">
                 <div className="flex items-center gap-2 text-sm font-semibold text-slate-700">
-                  <Send className="h-4 w-4 text-olive-600" />
+                  <Send className="h-4 w-4 text-emergency-600" />
                   Dispatch-ready ambulances
                 </div>
                 <div className="mt-4 space-y-3">
@@ -424,7 +424,7 @@ function DashboardPage() {
                     <div key={ambulance.id} className="rounded-2xl border border-slate-100 bg-neutral-50 p-4">
                       <p className="font-semibold text-slate-800">{ambulance.license_plate}</p>
                       <p className="mt-1 text-sm text-slate-500">{ambulance.driver_name}</p>
-                      <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-olive-600">{ambulance.region}</p>
+                      <p className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-emergency-600">{ambulance.region}</p>
                     </div>
                   ))}
                 </div>
@@ -538,7 +538,7 @@ function DashboardPage() {
                 type="button"
                 onClick={submitDispatch}
                 disabled={submitting || !availableAmbulances.length}
-                className="rounded-full bg-olive-600 px-5 py-2.5 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-60"
+                className="rounded-full bg-emergency-600 px-5 py-2.5 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-60 transition hover:bg-emergency-700"
               >
                 {submitting ? 'Dispatching...' : 'Dispatch & Notify'}
               </button>

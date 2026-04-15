@@ -7,11 +7,36 @@ services:
       POSTGRES_PASSWORD: password123
       POSTGRES_DB: emergency_db
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     restart: unless-stopped
+    networks:
+      - ambulance-net
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    environment:
+      DB_USER: emergency_user
+      DB_PASSWORD: password123
+      DB_HOST: db
+      DB_NAME: emergency_db
+      DB_PORT: 5432
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    restart: unless-stopped
+    networks:
+      - ambulance-net
+
+networks:
+  ambulance-net:
+    driver: bridge
 
 volumes:
   pgdata:
